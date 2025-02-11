@@ -74,7 +74,7 @@ export const me = async (req, res) => {
 
   try {
     
-    const userId = req.user._id;
+    const userId = req.user._id
    
     const currUser = await User.findById(userId).select("-password")
 
