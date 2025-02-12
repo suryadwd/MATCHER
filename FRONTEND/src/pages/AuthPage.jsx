@@ -19,13 +19,13 @@ const AuthPage = () => {
       <div className='bg-white p-8 rounded-lg shadow-xl'>
       {isLogin ? <Login /> : <Signup />}
 
-      <div className='mt-8 text-center'>
+      <div className='mt-4 text-center'>
         <p className='text-sm text-gray-600'>
           {isLogin ? "Don't have an account? " : "Already have an account? "}
         </p>
 
       <button onClick={() => setIsLogin((isLogin) => !isLogin)}
-      className='mt-2 text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-300 ease-in-out'
+      className='mt-1 text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-300 ease-in-out'
       >
         {isLogin ? "Create an account" : "Sign in"}
       </button>
