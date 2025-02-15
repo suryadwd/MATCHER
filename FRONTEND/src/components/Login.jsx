@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuthStore } from "../store/useAuthStore";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -6,10 +7,12 @@ const Login = () => {
     password: "",
   });
 
+  const {login} = useAuthStore()
+
   const onSubmit = (e) => {
     e.preventDefault();
     
-    
+    login(data)
 
   };
 

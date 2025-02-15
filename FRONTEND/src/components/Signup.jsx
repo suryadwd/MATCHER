@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuthStore } from "../store/useAuthStore";
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -10,9 +11,11 @@ const Signup = () => {
     genderPreference: "",
   });
 
+  const { signup, loading } = useAuthStore()
+
   const Submit = async(e) => {
     e.preventDefault()
-    console.log(data)
+    signup(data)
   }
 
   return (
@@ -186,7 +189,7 @@ const Signup = () => {
 				</div>
 			</div>
 
-    <button type="submit" className="px-7 py-1 bg-blue-500 text-white rounded-lg ml-[34%] mt-4">Sign in</button>
+    <button type="submit" className="px-7 py-1 bg-blue-500 text-white rounded-lg ml-[34%] mt-4">{ (loading) ? "Loading..." : "Sign in"}</button>
 
     </form>
   );

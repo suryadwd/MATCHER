@@ -27,7 +27,7 @@ const AuthPage = () => {
       <button onClick={() => setIsLogin((isLogin) => !isLogin)}
       className='mt-1 text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-300 ease-in-out'
       >
-        {isLogin ? "Create an account" : "Sign in"}
+        {isLogin ? "Create an account" : "Login now"}
       </button>
 
       </div>

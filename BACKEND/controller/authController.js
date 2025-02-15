@@ -25,7 +25,7 @@ export const signup = async (req, res) => {
 
   await newUser.save()
 
-  return res.status(201).json({success:true, message: "User created"})
+  return res.status(201).json({success:true, message: "User created", user: newUser})
 
   } catch (error) {
     console.log("error in signup")
@@ -52,7 +52,7 @@ export const login = async (req, res) => {
 
   generateTokenAndSetCookies(payload, res)
 
-  return res.status(200).json({success:true, message: "User logged in"})
+  return res.status(200).json({success:true, message: "User logged in", user: user})
 
   } catch (error) {
     console.log("error in login")
@@ -73,14 +73,13 @@ export const logout = async (req, res) => {
 export const me = async (req, res) => {
 
   try {
-    
     const userId = req.user._id
    
     const currUser = await User.findById(userId).select("-password")
 
     if(!currUser) return res.status(404).json({success:false, message: "User not found"})
 
-    return res.status(200).json({success:true, message: currUser})
+    return res.status(200).json({success:true, user: currUser})
 
   } catch (error) {
     console.log("error in me")

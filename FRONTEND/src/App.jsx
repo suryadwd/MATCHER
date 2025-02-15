@@ -1,30 +1,49 @@
-import React, { useEffect } from 'react'
-import HomePage from './pages/HomePage'
-import AuthPage from './pages/AuthPage'
-import ProfilePage from './pages/ProfilePage'
-import ChatPage from './pages/ChatPage'
-import { Routes, Route } from 'react-router-dom'
-import { useAuthStore } from './store/useAuthStore'
+import React, { useEffect } from "react";
+import HomePage from "./pages/HomePage";
+import AuthPage from "./pages/AuthPage";
+import ProfilePage from "./pages/ProfilePage";
+import ChatPage from "./pages/ChatPage";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuthStore } from "./store/useAuthStore";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
+  const { checkAuth, authUser, checkingAuth } = useAuthStore();
 
-  const {checkAuth} = useAuthStore()
 
   useEffect(() => {
-    checkAuth()
-  }, [checkAuth])
+    checkAuth();
+  }, [checkAuth]);
+
+  if(checkingAuth) return null
 
   return (
-    <div className='absolute inset-0 -z-10 w-full h-full bg-[#E38E49] bg-[linear-gradient(to_right,#E38E49,transparent_1px),linear-gradient(to_bottom,#E38E49,transparent_1px)] bg-[size:6rem_3rem]'>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/auth" element={<AuthPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/chat/:id" element={<ChatPage />} />
-    </Routes>
+    <div className="absolute inset-0 -z-10 w-full h-full bg-[#E38E49] bg-[linear-gradient(to_right,#eaa874_1px,transparent_1px),linear-gradient(to_bottom,#eaa874_1px,transparent_1px)] bg-[size:6rem_3rem]">
 
+      <Routes>
+        <Route
+          path="/"
+          element={authUser ? <HomePage /> : <Navigate to={"/auth"} />}
+        />
+        <Route
+          path="/auth"
+          element={!authUser ? <AuthPage /> : <Navigate to={"/" }/>}
+        />
+
+        <Route
+          path="/profile"
+          element={authUser ? <ProfilePage /> : <Navigate to={"/auth"} />}
+        />
+        <Route
+          path="/chat/:id"
+          element={authUser ? <ChatPage /> : <Navigate to={"/auth"} />}
+        />
+      </Routes>
+      <Toaster />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
+
+//routes not working properly 2 14
