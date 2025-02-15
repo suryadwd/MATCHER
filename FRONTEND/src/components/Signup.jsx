@@ -112,7 +112,7 @@ const Signup = () => {
 
       <div className="flex items-center">
         <input
-         type="radio"
+         type="checkbox"
          id="male" 
          value="male"
          name="gender"
@@ -125,7 +125,7 @@ const Signup = () => {
 
       <div className="flex items-center">
         <input
-         type="radio"
+         type="checkbox"
          id="female" 
          name="gender"
          value="female"
