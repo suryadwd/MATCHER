@@ -1,4 +1,6 @@
 import { User } from "../models/user.model.js";
+import cloudinary from "../config/clouddb.js";
+
 
 export const updateProfile = async (req, res) => {
 

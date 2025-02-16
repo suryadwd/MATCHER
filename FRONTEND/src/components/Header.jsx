@@ -80,13 +80,13 @@ const Header = () => {
             ) : (
               <>
                 <Link
-                  to={"/login"}
+                  to="/auth"
                   className="text-white font-medium   hover:text-pink-500 transition-colors duration-300 ease-in-out  "
                 >
                   Login
                 </Link>
                 <Link
-                  to={"/signup"}
+                  to="/auth"
                   className="text-white font-medium   hover:text-pink-500 transition-colors duration-300 ease-in-out  "
                 >
                   signup
@@ -112,7 +112,7 @@ const Header = () => {
             {authUser ? (
               <>
                 <Link
-                  to="/profile"
+                  to="/auth"
                   className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-pink-700"
                   onClick={() => setmobileMenuOpen(false)}
                 >
@@ -154,3 +154,4 @@ const Header = () => {
 };
 
 export default Header;
+
